@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Harish | Healing & Energy Sessions</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+
+/* ---------- FAQ ---------- */
+/* ---------- FAQ ---------- */
+/* .faq details {
+  background: #f5f5e6;
+  box-shadow: none;
+  border-left: 4px solid #d6d6b8;
+} */
+ .faq details {
+  background: #f1f1dd;
+  border-radius: 15px;
+  padding: 3px 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 15px 35px #a7a77e54;
+  transition: all 0.35s ease;
+  overflow: hidden;
+  border-left: 5px solid #ebebd4;
+}
+
+.faq details[open] {
+  border-left-color: #2e2e2d;
+}
+
+.faq summary {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-right: 35px;
+  transition: color 1s ease;
+
+    /* Updated color */
+  color: #2e2d2d82;          
+  transition: color 0.5s ease;
+  text-shadow: 0 2px 2px #2e2e2d10;
+  
+}
+
+.faq summary:hover {
+  color: #2e2e2d;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 26px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.faq details[open] summary::after {
+  content: "−";
+  transform: rotate(180deg);
+}
+/*now*/
+.faq p {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #555555;
+  background: #f6f6e3;
+  line-height: 1.8;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.faq details[open] p {
+  max-height: 1000px; /* ensures full content shows */
+  opacity: 1;
+}
+
+/* Subtle hover lift for card */
+.faq details:hover {
+  transform: translateY(-3px);
+  transition: all 0.35s ease;
+}
+/* ---------- ABOUT JULIAN STYLE SECTION ---------- */
+.about-julian {
+  background: #e4e6cc;
+  padding: 140px 40px;
+}
+
+.about-wrap {
+  max-width: 1100px;
+  margin: auto;
+  display:grid;
+  grid-template-columns: 250px 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+/* IMAGES */
+.about-images {
+  position: relative;
+}
+
+.about-images img {
+  width: 100%;
+  display: block;
+}
+
+.main-img {
+  border-radius: 10px;
+}
+
+.secondary-img {
+  bottom: -90px;
+  right: -70px;
+  width: 60%;
+  opacity: 0.95;
+}
+
+/* TEXT */
+.about-content h2 {
+  font-size: 46px;
+  margin-bottom: 36px;
+}
+
+.about-content p {
+  font-size: 16.5px;
+  line-height: 2;
+  color: #2f2f2f;
+  max-width: 560px;
+}
+
+.about-content h2 span {
+  font-style: italic;
+}
+
+
+.about-link {
+  margin-top: 30px;
+}
+
+.about-link a {
+  font-weight: 500;
+  color:#2f2f2f;
+  text-decoration-thickness: 1px;
+}
+
+.secondary-img {
+  object-fit:cover;
+  background: #000;
+}
+
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 900px) {
+  .about-wrap {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .secondary-img {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .about-content h2 {
+    text-align: center;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .faq summary {
+    font-size: 18px;
+  }
+  .faq p {
+    font-size: 15px;
+  }
+  .faq details {
+    padding: 20px 20px;
+  }
+}
+
+
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f3f3e3;
+  color: #2c2c2c;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  position: relative;
+  height: 70vh;
+}
+
+header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.35);
+  color: white;
+  text-align: center;
+}
+
+.header-text h1 {
+  font-size: 52px;
+  letter-spacing: 1px;
+}
+
+.header-text p {
+  font-size: 18px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 12px;
+}
+
+
+/* ---------- CONTAINER ---------- */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 70px 25px;
+}
+
+/* ---------- SECTION TITLES ---------- */
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* ---------- ABOUT ---------- */
+.about p {
+  text-align: center;
+  font-size: 17px;
+  color: #555;
+}
+
+/* ---------- SESSION CARDS ---------- */
+.card {
+  background: #f6f6ec;
+  border-radius: 14px;
+  padding: 40px 35px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.sessions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+  align-items: stretch; /* make grid items same height */
+}
+
+.card h3 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.price {
+  font-size: 15px;
+  color: #2b881e;
+}
+
+.card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.9;
+  margin-top: 18px;
+  margin-bottom: 25px;
+}
+
+.card p span {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+
+
+.card p span.includes {
+  font-weight: 600;      /* bold text for "Includes:" */
+  color: #2e2e2d;        /* optional color */
+  gap: 0;                /* no star before this line */
+}
+
+.card p span:not(.includes)::before {
+  content: "✧";          /* star for other items */
+  color: #8c8c6e;
+  margin-right: 6px;
+}
+
+.includes-list {
+  text-align: left;        /* Align items left inside card */
+  margin-top: 18px;
+  margin-bottom: 25px;
+}
+
+.includes-title {
+  font-weight: 600;        /* Bold Includes: */
+  margin-bottom: 10px;
+  color: #2e2e2d;
+}
+
+.includes-item {
+  position: relative;
+  padding-left: 22px;      /* space for star */
+  margin-bottom: 6px;
+  line-height: 1.8;
+  font-size: 15px;
+  color: #555;
+}
+
+.includes-item::before {
+  content: "✧";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #8c8c6e;
+}
+
+
+
+/* ---------- BUTTON ---------- */
+.btn {
+  display: inline-block;
+  padding: 16px 36px;
+  background: #1f1f1f;
+  color: #f1f1dd;
+  text-decoration: none;
+  border-radius: 6px; /* NOT oval */
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: #2e2e2dea;
+  transform: translateY(-2px);
+}
+
+
+/* ---------- BOOKING ---------- */
+.booking {
+  background: #3a3a36;
+  text-align: center;
+  padding: 90px 25px;
+}
+
+.booking h2 {
+  color: #f1f1dd;
+}
+
+.booking p {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 35px;
+  color: #d8d8bf;
+}
+
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: #1e1e1e;
+  color: #aaa;
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+}
+
+.waitlist-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: #f3f3e3;
+}
+
+.waitlist-box {
+  max-width: 520px;
+  text-align: center;
+}
+
+.status-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  
+  text-transform:none;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.waitlist-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 36px;
+  color: #2c2c2c;
+}
+
+
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.waitlist-form input {
+  padding: 14px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.waitlist-form button {
+  padding: 14px;
+  background: #2c2c2c;
+  color: #f3f3e3;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.waitlist-form button:hover {
+  background: #cbcbb0;
+  color: #2c2c2c;
+}
+.secondary-video {
+  border-radius: 10px;
+  opacity: 0.95;
+  display: block;
+}
+
+
+
+
+/* ===== JULIAN MORONI CONTACT STYLE ===== */
+
+.contact-julian {
+  background: #2c2c2c;
+  padding: 140px 20px;
+}
+
+.contact-inner {
+  max-width: 720px;
+  margin: auto;
+  padding: 90px 80px;
+  background: #f4f4ea;
+  border: 1px solid #3e3b3b;
+  border-radius: 60px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+}
+
+
+.contact-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 65px;
+  color: #2c2c2c;
+}
+
+.contact-heading span {
+  font-style: italic;
+}
+
+.contact-inner form {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+.field label {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: none;
+  margin-bottom: 14px;
+  color: #2c2c2c;
+}
+
+.field label em {
+  opacity: 0.5;
+  font-size: 11px;
+  text-transform: none;
+}
+
+
+
+
+
+
+
+
+.name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-inner input,
+.contact-inner textarea {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  padding: 14px 16px;
+  border-radius: 25px;
+  border: 1px solid #deded2;
+  background: #f8f8f1;
+  
+  box-shadow: inset 0 1px 2px #2c2c2c5d;
+
+  color: #2c2c2c;
+  transition: border 0.3s ease, background 0.3s ease;
+}
+
+.contact-inner input::placeholder,
+.contact-inner textarea::placeholder {
+  color: #9a9a90;
+}
+
+.contact-inner input:focus,
+.contact-inner textarea:focus {
+  outline: none;
+  border-color: #2c2c2c;
+  background: #ffffff;  
+}
+
+.contact-inner textarea {
+  resize: none;
+}
+
+.contact-inner button {
+  margin-top: 30px;
+  align-self: center;
+
+  padding: 14px 34px;
+  border-radius: 25px;              /* soft rounded pill */
+  border: 1px solid #2c2c2c;
+
+  background: transparent;
+  color: #2c2c2c;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.contact-inner button:hover {
+  background: #2c2c2c;
+  color: #e8e3f3;
+  transform: translateY(1px);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .contact-inner {
+    padding: 50px 25px;
+  }
+
+  .contact-heading {
+    font-size: 32px;
+  }
+
+  .name-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*magical flow video css*/
+.flow-section {
+  position: relative;
+  width: 100%;
+  min-height: 500px; /* full section height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #f3f3e3 0%, #2c2c2c 100%);
+  padding: 80px 20px;
+  border-radius: 60px; /* subtle corner rounding */
+}
+
+/* Video behind content */
+.flow-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 60px; 
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Top overlay header */
+.flow-header {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 3;
+}
+
+.flow-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: #f3f3e3;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  font-weight: 400;
+}
+
+.flow-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.flow-button {
+  padding: 10px 25px;
+  background: #2c2c2c;
+  color: #f3f3e3;
+  border-radius: 25px;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.flow-button:hover {
+  background: #555;
+}
+
+.flow-icon img {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.flow-icon img:hover {
+  transform: scale(1.1);
+}
+
+/* Centered text over video */
+.flow-text {
+  position: relative;
+  z-index: 2;
+  font-family: 'Playfair Display', serif;
+  text-transform: capitalize;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #dada75;
+  text-align: center;
+  max-width: 700px;
+  text-shadow: 0 2px 6px #f0f0c59e;
+  padding: 0 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .flow-text {
+    font-size: 28px;
+  }
+  .flow-header {
+    padding: 0 15px;
+  }
+  .flow-name {
+    font-size: 22px;
+  }
+  .flow-button {
+    padding: 8px 18px;
+    font-size: 12px;
+  }
+  .flow-icon img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+
+
+
+/* Name + tagline vertically centered */
+.header-text {
+  position: absolute;
+  inset: 0; /* covers entire header */
+  display: flex;
+  justify-content: space-between; /* left-right alignment */
+  align-items: center;             /* vertical centering of left content */
+  padding: 0 40px;                 /* space from edges */
+  background: rgba(0,0,0,0.35);   /* overlay */
+  z-index: 2;
+}
+
+/* Left column: name + tagline */
+/* Header overlay container */
+.header-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center; /* center the main text horizontally */
+  align-items: center;     /* center vertically */
+  background: #f3f3e320;
+  z-index: 2;
+}
+
+/* Name + tagline */
+.header-left {
+  text-align: center;
+  color: #fff;
+  z-index: 3; /* ensure it's above video/image */
+}
+
+.header-left h1 {
+  font-size: 52px;
+  margin: 0;
+}
+
+.header-left p {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* Book Now button - absolute top-right */
+.header-right {
+  position: absolute;
+  top: 20px;   /* distance from top */
+  right: 40px; /* distance from right */
+  z-index: 3;
+}
+
+.header-right .header-btn {
+  margin: 0;
+}
+
+
+/* Base header button style */
+/* Base header button style */
+.header-book {
+  padding: 12px 28px;           /* size of button */
+  background: none;             /* transparent */
+  color: #f3f3e3;               /* text color */
+  border: 2px solid #f3f3e3;    /* white border */
+  border-radius: 25px;          /* pill-shaped corners */
+  font-weight: 500;
+  font-family: 'Playfair Display', serif;
+  text-transform: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.header-book:hover {
+  background: #f3f3e3;          /* white fill on hover */
+  color: #2c2c2c;               /* dark text on hover */
+  transform: translateY(-2px);  /* slight lift */
+}
+
+
+
+@media (max-width: 900px) {
+  .header-right {
+    position: static; /* button moves below text on small screens */
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .header-left h1 {
+    font-size: 36px;
+  }
+
+  .header-left p {
+    font-size: 16px;
+  }
+}
+
+
+
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="qw1.jpeg" alt="Healing">
+  
+  <!-- top CTA box -->
+  <div class="header-text">
+  <div class="header-left">
+    <h1>Harish</h1>
+    <p>Healing & Energy Sessions</p>
+  </div>
+  <div class="header-right">
+  <a href="#booking" class="btn header-btn header-book">Book a Session</a>
+</div>
+
+  
+</div>
+
+
+<section class="waitlist-section">
+  <div class="waitlist-box">
+    <h2>
+      I’m currently fully booked.
+    </h2>
+
+    <div class="status-text">
+      Sign up to be the first to know when bookings open again.
+      </div>
+
+    
+
+    <form action="https://formsubmit.co/harish67890h@gmail.com" method="POST" class="waitlist-form">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="New Waitlist Signup">
+      <input type="hidden" name="_next" value="thank-you.html">
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        required
+      >
+
+      <button type="submit">Join the waitlist</button>
+    </form>
+
+  </div>
+</section>
+
+<section class="container">
+  <h2>Sessions</h2>
+<div class="sessions">
+  <div class="card">
+  <h3>Virtual Surgery + Reiki</h3>
+  <div class="price">60 mins · ₹1500</div>
+  <p>
+     <span class="includes">Includes:</span>
+    <span>Guided breathwork</span>
+    <span>Chakra & aura scan</span>
+    <span>Energetic surgery</span>
+    <span>Distance Reiki</span>
+    <span>Written intuitive insights</span>
+  </p>
+  <a href="#booking" class="btn">Book Session</a>
+</div>
+
+
+<div class="card">
+  <h3>Virtual Reiki Session</h3>
+  <div class="price">45 mins · ₹900</div>
+  <p>
+    
+     <span class="includes">Includes:</span>
+    <span>Guided breathwork</span>
+    <span>Chakra & aura scan</span>
+    <span>Distance Reiki</span>
+    <span>Written intuitive insights</span>
+    <br>
+  </p>
+  <a href="#booking" class="btn">Book Session</a>
+</div>
+
+  <div class="card">
+  <h3>Virtual Magnified Healing Session</h3>
+  <div class="price">40 mins · ₹2000</div>
+
+  <div class="includes-list">
+    <div class="includes-title">Includes:</div>
+    <div class="includes-item">Guided breathwork</div>
+    <div class="includes-item">Chakra & aura healing</div>
+    <div class="includes-item">Karmic clearance</div>
+    <div class="includes-item">Ascension process</div>
+    <div class="includes-item">Written intuitive insights</div>
+  </div>
+
+  <a href="#booking" class="btn">Book Session</a>
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<section class="container faq">
+  <h2>Common Questions</h2>
+
+  <details>
+    <summary>What is Reiki?</summary>
+    <p>
+      Reiki is a gentle yet powerful energy healing technique that works on the
+      emotional, physical, mental, and spiritual levels.
+      <br><br>
+      We all carry a universal life force energy. When that energy becomes blocked
+      or stagnant, it can lead to imbalance, fatigue, emotional heaviness, or
+      disconnection from ourselves.
+      <br><br>
+      Reiki restores the natural flow of energy in your body by gently channeling
+      this life force through the hands of the practitioner. The process is subtle,
+      non-invasive, and deeply nurturing. It does not interfere with medical or
+      psychological treatments — in fact, it often supports and enhances them.
+      <br><br>
+      You do not have to believe in anything for Reiki to work — your body already
+      knows how to receive.
+    </p>
+  </details>
+
+  <details>
+    <summary>Are your sessions online or in-person?</summary>
+    <p>
+      My sessions are held online only, and the effect is just as powerful as being
+      in the same room — in fact, many people find it even better.
+      <br><br>
+      Reiki flows beyond time and space, and since deep relaxation is essential for
+      the energy to work, there is no better place to receive than from the comfort
+      and safety of your own home.
+    </p>
+  </details>
+
+  <details>
+    <summary>How does a distance Reiki session work?</summary>
+    <p>
+      In Reiki, energy is not bound by time or space. Through intention and
+      traditional Reiki symbols, healing energy can be channeled across distance,
+      connecting directly to your energetic field, wherever you are.
+      <br><br>
+      We will meet via a live 1-on-1 video call on Google Meet or WhatsApp. After
+      booking, you will receive a private link to a preparation folder with:
+      <br><br>
+      ✧ Simple instructions<br>
+      ✧ Optional calming music<br>
+      ✧ Suggestions to create a supportive space before your session
+      <br><br>
+      Your session begins with a short check-in and a brief breathwork practice to
+      open the body and energy channel. You will then rest with eyes closed as Reiki
+      flows where it is needed.
+      <br><br>
+      At the end, there is space to gently return and share any experiences. I will
+      send you a written follow-up afterward with intuitive insights to help
+      integrate the session.
+    </p>
+  </details>
+
+  <details>
+    <summary>What can Reiki help me with?</summary>
+    <p>
+      Reiki meets you exactly where you are, helping soften, release, and realign
+      what is ready to shift.
+      <br><br>
+      ⟡ Emotional release & grounding<br>
+      ⟡ Stress, anxiety & mental overload<br>
+      ⟡ Chakra balancing & energetic realignment<br>
+      ⟡ Sleep issues, tension & restlessness<br>
+      ⟡ Heartbreak, grief, loss & emotional pain<br>
+      ⟡ Spiritual disconnection or lack of clarity<br>
+      ⟡ Deepening intuition & soul connection<br>
+      ⟡ Clearing stagnant or heavy energy<br>
+      ⟡ Energy fatigue, burnout & spiritual blockages<br>
+      ⟡ Life transitions, endings & awakenings
+    </p>
+  </details>
+
+  <details>
+    <summary>What will I feel during a session?</summary>
+    <p>
+      Everyone experiences Reiki differently. Some people feel warmth, tingling,
+      deep relaxation, or emotional release, while others may even fall asleep.
+      You might notice shifts right away or gently in the days following the
+      session.
+      <br><br>
+      It is important not to expect a specific sensation. Reiki works beyond the
+      mind’s control, and the energy always flows where it is needed most, even if
+      the experience feels subtle in the moment.
+    </p>
+  </details>
+
+  <details>
+    <summary>How many sessions do I need?</summary>
+    <p>
+      Reiki works by removing layers step by step.
+      <br><br>
+      One session can bring relief and clarity, but to experience deeper and more
+      stable energetic shifts, it usually takes 8–10 sessions. This allows the
+      healing to go deeper and fully integrate over time.
+    </p>
+  </details>
+
+</section>
+
+
+
+
+<section class="about-julian">
+  <div class="about-wrap">
+
+    <!-- LEFT: IMAGE COLUMN -->
+     <div class="about-images">
+      <img src="aq1.jpeg" alt="Harish portrait" class="main-img"><br><br><br><br>
+      <video class="secondary-video" autoplay muted loop playsinline width="100%">
+  <source src="hands.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+    </div>
+    <!-- RIGHT: TEXT COLUMN -->
+    <div class="about-content">
+      <h2>About <span>Harish</span></h2>
+
+      <p>
+        Harish is a Reiki practitioner, energy worker, and intuitive healer devoted
+        to supporting deep emotional and energetic transformation.
+      </p>
+
+      <p>
+        His journey began with a calling to understand the unseen layers of life —
+        energy, intuition, and the subtle forces that guide healing and awakening.
+      </p>
+
+      <p>
+        Through Reiki, chakra work, and intuitive practices, Harish helps people
+        reconnect with their inner power, release stagnant energy, and return to
+        a grounded sense of clarity and peace.
+      </p>
+
+      <p>
+        At the heart of his work is the belief that healing is not about becoming
+        someone new, but about remembering who you truly are.
+      </p>
+
+      <p class="about-link">
+        Curious to know more about the journey that led here? Read 
+        <a href="readme.html">my story</a>
+
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- magical flow video -->
+ <!-- magical flow video as full-section background -->
+<section class="flow-section">
+  <div class="flow-text">
+    Reiki is a practice of returning to balance, reminding your energy of its
+    natural ability to heal, restore, and flow.
+  </div>
+
+  <video class="flow-video" autoplay muted loop playsinline>
+    <source src="hands.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</section>
+
+
+
+<!-- Reach out form-->
+<section class="contact-julian">
+  <div class="contact-inner">
+
+    <h2 class="contact-heading">
+      Still have questions?<br>
+      <span>Reach out.</span>
+    </h2>
+
+    <form action="https://formsubmit.co/harish67890h@gmail.com" method="POST">
+
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="New Message">
+      <input type="hidden" name="_next" value="thank-you.html">
+
+      <div class="field">
+        <label>Name <em>(required)</em></label>
+        <div class="name-row">
+          <input type="text" name="first_name" placeholder="First Name" required>
+          <input type="text" name="last_name" placeholder="Last Name">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Email <em>(required)</em></label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="field">
+        <label>Message <em>(required)</em></label>
+        <textarea name="message" rows="4" required></textarea>
+      </div>
+
+      <button type="submit">Send</button>
+
+    </form>
+  </div>
+</section>
+
+
+
+
+<footer>
+  © 2025 Harish · Healing & Energy Sessions
+</footer>
+<script>
+  const details = document.querySelectorAll(".faq details");
+  details.forEach((target) => {
+    target.addEventListener("toggle", () => {
+      if (target.open) {
+        details.forEach((el) => {
+          if (el !== target) el.open = false;
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
