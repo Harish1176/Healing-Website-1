@@ -14,7 +14,68 @@
 
 <style>
 * {box-sizing: border-box;}
+/* ================= GLOBAL BUTTON RESET ================= */
 
+button{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+
+  margin:0;
+  padding:0;
+
+  border:none;
+  outline:none;
+
+  background:none;
+
+  font-family: inherit;
+  line-height:1;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+}
+.close-booking{
+  position:absolute;
+  top:18px;
+  right:20px;
+
+  width:32px;
+  height:32px;
+  min-width:32px;
+  max-width:32px;
+
+  padding:0;
+  margin:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:22px;
+  font-weight:400;
+  line-height:1;
+
+  color:#555;
+  background:transparent;
+
+  border:none;
+  outline:none;
+
+  cursor:pointer;
+
+  opacity:0.7;
+
+  flex:0 0 32px;   /* 🔥 prevents flex stretching */
+
+  box-sizing:border-box;
+
+  appearance:none;
+  -webkit-appearance:none;
+}
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -897,35 +958,70 @@ footer {
 
 
 /* ===== BOOKING MODAL (Julian style) ===== */
-.booking-overlay {
-  position: fixed;
-  inset: 0;
-  background: #0000008c;
-  backdrop-filter: blur(6px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
+.booking-overlay{
+  position:fixed;
+  inset:0;
 
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
+  background:#0000008c;
+  backdrop-filter:blur(6px);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:9999;
+
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.4s ease;
 }
 
-.booking-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
+.booking-overlay.active{
+  opacity:1;
+  pointer-events:auto;
 }
 
-.booking-modal {
-  background: #f4f4ea;
-  padding: 60px 50px;
-  max-width: 420px;
-  width: 90%;
-  border-radius: 40px;
-  text-align: center;
-  position: relative;
-  animation: scaleIn 0.4s ease;
+.booking-modal{
+  background:#f4f4ea;
+
+  width:90%;
+  max-width:420px;
+
+  max-height:90vh;
+
+  padding:50px 40px;
+
+  border-radius:28px;
+
+  text-align:center;
+
+  position:relative;
+
+  animation:scaleIn 0.35s ease;
+
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+
+  overflow:hidden;
+}
+
+/* Let form scroll only if absolutely necessary */
+.booking-modal form{
+  overflow-y:auto;
+  max-height:70vh;
+  padding-right:6px;
+}
+/* Mobile refinement */
+@media (max-width:900px){
+
+.booking-modal{
+  width:92%;
+  padding:45px 30px;
+
+  max-height:85vh;
+}
+
 }
 .booking-modal.loading {
   opacity: 0.6;
@@ -992,16 +1088,27 @@ footer {
   background: #555;
 }
 
-.close-booking {
-  position: absolute;
-  top: 18px;
-  right: 22px;
-  font-size: 26px;
-  background: none;
-  border: none;
-  cursor: pointer;
+.close-booking{
+  position:absolute;
+  top:18px;
+  right:20px;
+  width:28px;
+  height:28px;
+  border:none;
+  background: transparent;
+  color:#555;
+  font-size:22px;
+  font-weight:300;
+  cursor:pointer;
+  line-height:1;
+  opacity:0.7;
+  transition: all 0.25s ease;
 }
 
+.close-booking:hover{
+  opacity:1;
+  transform: scale(1.1);
+}
 .payment-note {
   font-size: 13px;
   color: #777;
@@ -1009,151 +1116,225 @@ footer {
   text-align: center;
 }
 
+/* =======================================================
+   MASTER RESPONSIVE BLOCK — CLEAN PROFESSIONAL VERSION
+   Mobile First Safety Layout
+======================================================= */
 
-/* ---------- MOBILE ---------- */
-/* ---------- MOBILE ---------- */
-@media (max-width: 900px) {
+@media (max-width: 900px){
 
-  /* HEADER */  
-  header {
-    min-height: 360px;
-    max-height: 420px;
-  }
+/* ---------- HEADER ---------- */
 
-  .header-text {
-    padding: 20px;
-    text-align: center;
-    flex-direction: column;
-  }
-
-  .header-left h1 {
-    font-size: 38px;
-  }
-
-  .header-left p {
-    font-size: 14px;
-    letter-spacing: 2px;
-  }
-
-  .header-right {
-    position: absolute;
-    bottom: 35px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-  }
-  .header-right .header-book {
-    background: #2c2c2c; /* dark background */
-    color: #f3f3e3;       /* text color */
-    padding: 12px 28px;
-    z-index: 5;
-  }
-
-  .header-book {
-    padding: 12px 26px;
-    font-size: 14px;
-  }
-
-  /* ABOUT */
-  .about-wrap {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-.about-images {
-    height: auto;      /* 🔑 allow natural height */
-    aspect-ratio: 1 / 1; /* square image, looks elegant */
-  }
-
-  .about-images img {
-    object-fit: contain;
-  }
-  .secondary-img {
-    position: static;
-    transform: none;
-    width: 100%;
-    margin-top: 30px;
-  }
-
-  .about-content h2 {
-    text-align: center;
-  }
-
-  .about-content p {
-    max-width: 100%;
-  }
-
-  /* FLOW SECTION */
-  .flow-text {
-    font-size: 28px;
-  }
-
-  .flow-header {
-    padding: 0 15px;
-  }
-
-  .flow-name {
-    font-size: 22px;
-  }
-
-  .flow-button {
-    padding: 8px 18px;
-    font-size: 12px;
-  }
-
-  .flow-icon img {
-    width: 24px;
-    height: 24px;
-  }
-
-  .flow-section {
-    padding: 100px 20px 140px;
-  }
-
-  .flow-text {
-    font-size: 26px;
-    line-height: 1.6;
-  }
-  
-
+header{
+  min-height: 360px;
+  max-height: 420px;
 }
 
-@media (max-width: 900px) {
-  section {
-    min-height: auto;
-  }
+.header-text{
+  padding: 20px;
+  text-align: center;
+  flex-direction: column;
 }
 
-
-/* ---------- SMALL MOBILE ---------- */
-@media (max-width: 900px) {
-  .contact-inner {
-    padding: 50px 25px;
-    border-radius: 30px;  /* smaller curve */
-  }
-
-  .contact-heading {
-    font-size: 32px;
-    margin-bottom: 40px;
-  }
+.header-left h1{
+  font-size: 38px;
 }
 
-
-@media (max-width: 600px) {
-
-  .faq summary {
-    font-size: 18px;
-  }
-
-  .faq p {
-    font-size: 15px;
-  }
-
-  .faq details {
-    padding: 20px;
-  }
+.header-left p{
+  font-size: 14px;
+  letter-spacing: 2px;
 }
 
+.header-right{
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+.header-right .header-book{
+  background:#2c2c2c;
+  color:#f3f3e3;
+  padding:12px 28px;
+}
+
+/* ---------- ABOUT ---------- */
+
+.about-wrap{
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.about-images{
+  height:auto;
+  aspect-ratio:1/1;
+}
+
+.about-images img{
+  object-fit: contain;
+}
+
+.secondary-img{
+  position: static;
+  transform: none;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.about-content h2{
+  text-align: center;
+}
+
+.about-content p{
+  max-width: 100%;
+}
+
+/* ---------- FLOW SECTION ---------- */
+
+.flow-text{
+  font-size: 26px;
+  line-height:1.6;
+}
+
+.flow-header{
+  padding:0 15px;
+}
+
+.flow-name{
+  font-size:22px;
+}
+
+.flow-button{
+  padding:8px 18px;
+  font-size:12px;
+}
+
+.flow-icon img{
+  width:24px;
+  height:24px;
+}
+
+.flow-section{
+  padding:100px 20px 140px;
+}
+
+/* ---------- GENERAL ---------- */
+
+section{
+  min-height:auto;
+}
+
+.contact-inner{
+  padding:50px 25px;
+  border-radius:30px;
+}
+
+.contact-heading{
+  font-size:32px;
+  margin-bottom:40px;
+}
+
+.faq summary{
+  font-size:18px;
+}
+
+.faq p{
+  font-size:15px;
+}
+
+.faq details{
+  padding:20px;
+}
+
+/* ---------- BOOKING MODAL ---------- */
+
+.booking-modal{
+  position: relative;
+
+  background:#f4f4ea;
+  padding:50px 40px;
+
+  max-width:420px;
+  width:92%;
+
+  border-radius:24px;
+
+  max-height:85vh;
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  text-align:center;
+
+  animation: scaleIn 0.4s ease;
+
+  box-sizing:border-box;
+}
+/* Close button */
+.close-booking{
+  position:absolute;
+  top:18px;
+  right:20px;
+
+  width:32px;
+  height:32px;
+
+  padding:0;
+  margin:0;
+
+  border:none;
+  outline:none;
+
+  background: transparent;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:22px;
+  font-weight:400;
+  line-height:1;
+
+  cursor:pointer;
+
+  opacity:0.7;
+  transition: opacity 0.25s ease, transform 0.2s ease;
+
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+
+  flex-shrink:0;
+  box-sizing:border-box;
+}
+
+.close-booking:hover{
+  opacity:1;
+  transform: scale(1.1);
+}
+
+/* Form elements */
+
+.booking-modal input,
+.booking-modal select{
+  margin-bottom:14px;
+  padding:12px;
+}
+
+/* Modal title spacing */
+
+#sessionTitle{
+  margin-top:20px;
+}
+
+/* Booking button */
+
+.booking-modal button{
+  width:100%;
+  padding:14px;
+}
+
+}
 </style>
 </head>
 
@@ -1641,65 +1822,7 @@ footer {
 
 
 
-<!--  TOPPPPPP RIGHTTTTTTTTTT BOOKING MODAL -->
-<script>
-// --- Top-right button booking ---
-const topRightBtn = document.getElementById("topRightBtn");
 
-if (topRightBtn) {
-  topRightBtn.addEventListener("click", () => {
-    overlay.classList.add("active");
-
-    // Reset modal
-    document.getElementById("sessionTitle").innerText = "Select a Session";
-    sessionSelect.style.display = "block";   // show session dropdown
-    sessionSelect.value = "";
-    durationSelect.innerHTML = `<option value="">Select duration</option>`;
-
-    bookingSummary.style.display = "none";
-    sessionField.value = "";
-    durationField.value = "";
-    priceField.value = "";
-  });
-}
-// When session selected → load durations (top-right button)
-sessionSelect.addEventListener("change", function () {
-  const selectedSession = this.value;
-  sessionField.value = selectedSession;
-
-  durationSelect.innerHTML = `<option value="">Select duration</option>`;
-
-  sessionData[selectedSession].forEach(item => {
-    const opt = document.createElement("option");
-    opt.value = item.duration;
-    opt.textContent = `${item.duration} · ${item.price}`;
-    durationSelect.appendChild(opt);
-  });
-
-  bookingSummary.style.display = "none";
-  durationField.value = "";
-  priceField.value = "";
-});
-
-// When duration selected → show price & duration for top-right button
-durationSelect.addEventListener("change", function () {
-  const selectedOption = this.selectedOptions[0];
-  if (!selectedOption) return;
-
-  const parts = selectedOption.textContent.split("·");
-  const duration = parts[0].trim();
-  const price = parts[1].trim();
-
-  durationField.value = duration;
-  priceField.value = price;
-
-  // Show summary only when using top-right button
-  if (sessionSelect.style.display === "block") {
-    bookingSummary.style.display = "block";
-    bookingSummary.innerText = `Selected: ${duration} · ${price}`;
-  }
-});
-</script>
 
 <!--  SESSION CARD BOOKING MODAL -->
  <!--CARD CARD CARD BOOK SESSION-->
@@ -1758,20 +1881,7 @@ durationSelect.addEventListener("change", function () {
   
  <input type="hidden" name="_autoresponse" value="Thank you for booking your healing session 🌿&#10;&#10;Your booking has been received successfully.&#10;&#10;I will personally review your request and contact you shortly to confirm the schedule.&#10;&#10;With love & light,&#10;Harish">
  <!-- Autoresponse  -->
-<!-- FORM VALIDATION - ADD HERE -->
-<script>
-document.querySelector('#bookingOverlay form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const durationSelect = document.getElementById('durationSelect');
-  const selectedOption = durationSelect.selectedOptions[0];
-  if (selectedOption && selectedOption.textContent.includes('·')) {
-    const parts = selectedOption.textContent.split('·');
-    document.getElementById('durationField').value = parts[0].trim();
-    document.getElementById('priceField').value = parts[1].trim();
-  }
-  this.submit();
-});
-</script>
+
 
 <button type="submit" id="bookingBtn">Book Now</button>
 
@@ -1782,139 +1892,6 @@ document.querySelector('#bookingOverlay form').addEventListener('submit', functi
 
   </div>
 </div>
-
-<script>
-const overlay = document.getElementById("bookingOverlay");
-const sessionSelect = document.getElementById("sessionSelect");
-const durationSelect = document.getElementById("durationSelect");
-const bookingSummary = document.getElementById("bookingSummary");
-const sessionField = document.getElementById("sessionField");
-const durationField = document.getElementById("durationField");
-const priceField = document.getElementById("priceField");
-const sessionData = {
-  "Basic Reiki Session": [{ duration: "30 mins", price: "₹600" }],
-  "Reiki Master Session": [{ duration: "45 mins", price: "₹900" }],
-  "Lama Fera Session": [
-    { duration: "30 mins", price: "₹1200" },
-    { duration: "45 mins", price: "₹2000" }
-  ],
-  "Magnified Healing Session": [
-    { duration: "30 mins", price: "₹900" },
-    { duration: "45 mins", price: "₹1800" }
-  ],
-  "Advanced Healing Session": [{ duration: "75 mins", price: "₹2500" }]
-};
-
-// <!--header right button multiple option-->
-
-
-// Open BOOK SESSION (CARD)
-function openBooking(button) 
-{
-  const sessionName = button.dataset.session;
-  const options = JSON.parse(button.dataset.options);
-  overlay.classList.add("active");
-  document.getElementById("sessionTitle").innerText = sessionName;
-  sessionField.value = sessionName;
-  durationSelect.innerHTML = `<option value="">Select duration</option>`;
-  
-  for (const dur in options) {
-    const opt = document.createElement("option");
-    opt.value = dur;
-    opt.textContent = `${dur} · ₹${options[dur]}`;
-    durationSelect.appendChild(opt);
-  }
-  bookingSummary.style.display = "none";
-  durationField.value = "";
-  priceField.value = "";
-}
-
-function closeBooking() 
-{
-  overlay.classList.remove("active");
-}
-
-
-
-
-// Optional: handle form submit
-// Optional: handle form submit
-// function handleBookingSubmit(e) {
-//   return true;
-//   // You can add validation or tracking here if needed
-// }
-</script>
-
-<!--Header right button multiple option-->
-
-<!--  TOPPPPPPP RIGHTTTTT-->
-<script>
-// When session selected → load durations (top-right button)
-sessionSelect.addEventListener("change", function () {
-  const selectedSession = this.value;
-  sessionField.value = selectedSession;
-
-  durationSelect.innerHTML = `<option value="">Select duration</option>`;
-
-  sessionData[selectedSession].forEach(item => {
-    const opt = document.createElement("option");
-    opt.value = item.duration;
-    opt.textContent = `${item.duration} · ${item.price}`;
-    durationSelect.appendChild(opt);
-  });
-
-  bookingSummary.style.display = "none";
-  durationField.value = "";
-  priceField.value = "";
-});
-// When duration selected → show price & duration for top-right button
-durationSelect.addEventListener("change", function () {
-  const selectedOption = this.selectedOptions[0];
-  if (!selectedOption) return;
-
-  const parts = selectedOption.textContent.split("·");
-  const duration = parts[0].trim();
-  const price = parts[1].trim();
-
-  durationField.value = duration;
-  priceField.value = price;
-
-  // Show summary only when using top-right button
-  if (sessionSelect.style.display === "block") {
-    bookingSummary.style.display = "block";
-    bookingSummary.innerText = `Selected: ${duration} · ${price}`;
-  }
-});
-</script>
-
-
-<!-- workin :CARDS SESSION price& duration value in card -->
-<script>
-durationSelect.addEventListener("change", function () {
-  const selectedText = this.value; // e.g. "30 mins"
-  if (!selectedText) return;
-
-  // Get price from option text
-  const selectedOption = this.selectedOptions[0];
-  const text = selectedOption.textContent; // "30 mins · ₹600"
-
-  const parts = text.split("·");
-  const duration = parts[0].trim(); // "30 mins"
-  const price = parts[1].trim();    // "₹600"
-
-  durationField.value = duration;
-  priceField.value = price;
-
-  // below 2 lines are responsible for displaying in session card 
-  // bookingSummary.style.display = "block";
-  // bookingSummary.innerText = `Selected: ${duration} · ${price}`;
-});
-</script>
-<!-- BOOK cards also show price& suration value in card -->
-
-
-
-
 
 <script>
   const details = document.querySelectorAll(".faq details");
@@ -1971,10 +1948,278 @@ const appearOnScroll = () => {
 window.addEventListener('scroll', appearOnScroll);
 window.addEventListener('load', appearOnScroll);
 </script>
+
+
+<script>
+/*
+=====================================================
+ GOD LEVEL BOOKING ENGINE — ELITE VERSION
+ Safe Singleton Architecture
+=====================================================
+*/
+
+const GOD_BOOKING_ENGINE = (function(){
+
+const engine = {
+
+overlay: document.getElementById("bookingOverlay"),
+sessionSelect: document.getElementById("sessionSelect"),
+durationSelect: document.getElementById("durationSelect"),
+bookingSummary: document.getElementById("bookingSummary"),
+
+sessionField: document.getElementById("sessionField"),
+durationField: document.getElementById("durationField"),
+priceField: document.getElementById("priceField"),
+
+escapeListenerRegistered:false,
+
+/* ---------------- INITIALIZE ---------------- */
+
+init(){
+
+const topBtn = document.getElementById("topRightBtn");
+
+topBtn?.addEventListener("click",()=>{
+
+this.openModal();
+
+document.getElementById("sessionTitle").innerText =
+"Select a Session";
+
+this.sessionSelect.style.display="block";
+this.sessionSelect.value="";
+
+this.resetSelectors();
+
+this.bookingSummary.style.display="none";
+
+});
+
+/* Escape key listener (singleton safe) */
+
+if(!this.escapeListenerRegistered){
+
+document.addEventListener("keydown",(e)=>{
+if(e.key==="Escape"){
+this.closeModal();
+}
+});
+
+this.escapeListenerRegistered = true;
+}
+
+/* Dropdown listeners */
+
+this.sessionSelect.addEventListener("change",()=>{
+this.loadSessionDurations(this.sessionSelect.value);
+});
+
+this.durationSelect.addEventListener("change",()=>{
+this.resolveSelection();
+});
+
+},
+
+/* ---------------- MODAL CONTROL ---------------- */
+
+openModal(){
+
+this.overlay.classList.add("active");
+
+},
+
+closeModal(){
+
+this.overlay.classList.remove("active");
+
+},
+
+/* Animation safe open */
+
+openAnimatedModal(){
+
+this.overlay.classList.remove("active");
+
+void this.overlay.offsetWidth;
+
+this.overlay.classList.add("active");
+
+},
+
+/* ---------------- DATA RESOLVER ---------------- */
+
+loadSessionDurations(sessionName){
+
+if(!sessionName) return;
+
+this.sessionField.value = sessionName;
+
+this.resetSelectors();
+
+const database = {
+
+"Basic Reiki Session":[
+{duration:"30 mins",price:"₹600"}
+],
+
+"Reiki Master Session":[
+{duration:"45 mins",price:"₹900"}
+],
+
+"Lama Fera Session":[
+{duration:"30 mins",price:"₹1200"},
+{duration:"45 mins",price:"₹2000"}
+],
+
+"Magnified Healing Session":[
+{duration:"30 mins",price:"₹900"},
+{duration:"45 mins",price:"₹1800"}
+],
+
+"Advanced Healing Session":[
+{duration:"75 mins",price:"₹2500"}
+]
+
+};
+
+const data = database[sessionName];
+
+if(!data) return;
+
+/* Inject options safely */
+
+data.forEach(item=>{
+
+const opt = document.createElement("option");
+
+opt.value = item.duration;
+opt.textContent = `${item.duration} · ${item.price}`;
+
+this.durationSelect.appendChild(opt);
+
+});
+
+},
+
+/* ---------------- SELECTION RESOLVER ---------------- */
+
+resolveSelection(){
+
+const selectedOption =
+this.durationSelect.selectedOptions[0];
+
+if(!selectedOption) return;
+
+const parts =
+selectedOption.textContent.split("·");
+
+if(parts.length < 2) return;
+
+const duration = parts[0].trim();
+const price = parts[1].trim();
+
+this.durationField.value = duration;
+this.priceField.value = price;
+
+if(this.sessionSelect.style.display === "block"){
+this.bookingSummary.style.display="block";
+this.bookingSummary.innerText =
+`Selected: ${duration} · ${price}`;
+}
+
+},
+
+/* ---------------- RESET SAFE STATE ---------------- */
+
+resetSelectors(){
+
+this.durationSelect.innerHTML =
+`<option value="">Select duration</option>`;
+
+this.bookingSummary.style.display="none";
+
+this.durationField.value="";
+this.priceField.value="";
+
+},
+
+/* ---------------- CARD BOOKING ---------------- */
+
+openCardBooking(button){
+
+if(!button) return;
+
+const sessionName = button.dataset.session;
+
+this.openAnimatedModal();
+
+document.getElementById("sessionTitle").innerText =
+sessionName;
+
+this.sessionSelect.style.display="none";
+
+this.resetSelectors();
+
+this.bookingSummary.style.display="none";
+
+this.durationField.value="";
+this.priceField.value="";
+
+this.sessionField.value = sessionName;
+
+/* Dataset JSON safe parse */
+
+let options = {};
+
+try{
+options = button.dataset.options ?
+JSON.parse(button.dataset.options) : {};
+}catch{
+options = {};
+}
+
+/* Inject card options safely */
+
+for(const dur in options){
+
+const opt = document.createElement("option");
+
+opt.value = dur;
+opt.textContent =
+`${dur} · ₹${options[dur]}`;
+
+this.durationSelect.appendChild(opt);
+
+}
+
+}
+
+};
+
+return engine;
+
+})();
+
+/* ---------- GLOBAL WRAPPERS ---------- */
+
+function openBooking(button){
+GOD_BOOKING_ENGINE.openCardBooking(button);
+}
+
+function closeBooking(){
+GOD_BOOKING_ENGINE.closeModal();
+}
+
+/* ---------- INIT ---------- */
+
+document.addEventListener("DOMContentLoaded",()=>{
+GOD_BOOKING_ENGINE.init();
+});
+
+</script>
 <footer>
   © 2025 Harish · Healing & Energy Sessions
 </footer>
 </body>
 </html>
-
 
