@@ -1393,7 +1393,7 @@ section{
       You’ll be notified when new healing sessions open.
      </div>
 
-    <form id="bookingForm" class="waitlist-form">
+    <form id="waitlistOnlyForm" class="waitlist-form">
   <!-- <input type="hidden" name="_captcha" value="false">
   -->
 
@@ -1776,11 +1776,7 @@ section{
       <span>Reach out.</span>
     </h2>
 
-  <form action="https://formsubmit.co/harish67890h@gmail.com" method="POST">
-
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_subject" value="New Message">
-  <input type="hidden" name="_next" value="thank-you.html">
+  <form id="contactForm">
 
   <div class="field">
     <label>Name <em>(required)</em></label>
@@ -1831,16 +1827,10 @@ section{
     <h2>Book a Session</h2>
     <p>Fill the form below to reserve your session.</p>
     
-    <form 
-  action="https://formsubmit.co/harish67890h@gmail.com" method="POST"
-    >
+    <form id="modalBookingForm">
   <!-- FormSubmit settings (client emaill will be like this ONLY) -->
-  <!-- <input type="hidden" name="_captcha" value="false">
-  -->
-  <input type="hidden" name="_subject" value="New Booking">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_message" value="You have a new client booking for a healing session. Kindly review the details below for scheduling and preparation:">
-  <input type="hidden" name="_next" value="thank-you.html">
+  <!-- <input type="hidden" name="_captcha" value="false"> -->
+
 <!-- Session title -->
 <h3 id="sessionTitle" style="margin-bottom:20px;"></h3>
 
@@ -1877,8 +1867,6 @@ section{
   <input type="email" name="email" placeholder="Email" required>
   
   
- <input type="hidden" name="_autoresponse" value="Thank you for booking your healing session 🌿&#10;&#10;Your booking has been received successfully.&#10;&#10;I will personally review your request and contact you shortly to confirm the schedule.&#10;&#10;With love & light,&#10;Harish">
- <!-- Autoresponse  -->
 
 
 <button type="submit" id="bookingBtn">Book Now</button>
@@ -2215,23 +2203,49 @@ GOD_BOOKING_ENGINE.init();
 });
 
 </script>
-  <script>
-document.getElementById("bookingForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
+<script>
+async function handleFormSubmit(formId) {
 
-  const formData = new FormData(this);
+  const form = document.getElementById(formId);
 
-  const response = await fetch("/api/book", {
-    method: "POST",
-    body: formData
+  form.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    try {
+      const response = await fetch("/api/book", {
+        method: "POST",
+        body: formData
+      });
+
+      if (response.ok) {
+        alert("Submitted successfully 🌿");
+        this.reset();
+
+        if(formId === "modalBookingForm"){
+          closeBooking();
+        }
+
+      } else {
+        alert("Something went wrong.");
+      }
+
+    } catch (error) {
+      alert("Server error.");
+    }
+
   });
 
-  if (response.ok) {
-    alert("Booking submitted successfully!");
-    this.reset();
-  } else {
-    alert("Something went wrong.");
-  }
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  handleFormSubmit("waitlistOnlyForm");
+  handleFormSubmit("contactForm");
+  handleFormSubmit("modalBookingForm");
+
 });
 </script>
 <footer>
@@ -2239,5 +2253,6 @@ document.getElementById("bookingForm").addEventListener("submit", async function
 </footer>
 </body>
 </html>
+
 
 
