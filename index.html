@@ -1394,6 +1394,10 @@ section{
      </div>
 
 
+    <form id="waitlistOnlyForm" class="waitlist-form">
+  <!-- <input type="hidden" name="_captcha" value="false">
+  -->
+
 
   <!-- Label added for accessibility -->
   <!-- <label for="waitlist-email">Email <em>(required)</em></label>-->
@@ -2200,39 +2204,52 @@ document.addEventListener("DOMContentLoaded",()=>{
 GOD_BOOKING_ENGINE.init();
 });
 
-
-</script>
-  <script>
-document.getElementById("bookingForm").addEventListener("submit", async function(e){
+document.getElementById("modalBookingForm")
+.addEventListener("submit", async function(e){
 
 e.preventDefault();
 
-const formData = {
- name: this.querySelector("[name='name']").value,
- email: this.querySelector("[name='email']").value,
- session: this.querySelector("[name='session']").value,
- duration: this.querySelector("[name='duration']").value,
- price: this.querySelector("[name='price']").value
+const btn = document.getElementById("bookingBtn");
+btn.innerText = "Processing...";
+btn.disabled = true;
+
+const data = {
+  session: document.getElementById("sessionField").value,
+  duration: document.getElementById("durationField").value,
+  price: document.getElementById("priceField").value,
+  name: this.name.value,
+  email: this.email.value
 };
 
-const response = await fetch("/api/book", {
- method:"POST",
- headers:{
-  "Content-Type":"application/json"
- },
- body: JSON.stringify(formData)
-});
+try{
+  const res = await fetch("/api/book",{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify(data)
+  });
 
-if(response.ok){
- alert("Booking Confirmed 🌿");
+  const result = await res.json();
+
+  if(result.success){
+    alert("Booking submitted successfully!");
+    closeBooking();
+    this.reset();
+  }else{
+    alert("Something went wrong.");
+  }
+
+}catch(err){
+  alert("Server error.");
 }
+
+btn.innerText = "Book Now";
+btn.disabled = false;
+
 });
 </script>
-
 <footer>
   © 2025 Harish · Healing & Energy Sessions
 </footer>
 </body>
 </html>
-
 
