@@ -2204,10 +2204,53 @@ document.addEventListener("DOMContentLoaded",()=>{
 GOD_BOOKING_ENGINE.init();
 });
 
+document.getElementById("modalBookingForm")
+.addEventListener("submit", async function(e){
 
+e.preventDefault();
+
+const btn = document.getElementById("bookingBtn");
+btn.innerText = "Processing...";
+btn.disabled = true;
+
+const data = {
+  session: document.getElementById("sessionField").value,
+  duration: document.getElementById("durationField").value,
+  price: document.getElementById("priceField").value,
+  name: this.name.value,
+  email: this.email.value
+};
+
+try{
+  const res = await fetch("/api/book",{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify(data)
+  });
+
+  const result = await res.json();
+
+  if(result.success){
+    alert("Booking submitted successfully!");
+    closeBooking();
+    this.reset();
+  }else{
+    alert("Something went wrong.");
+  }
+
+}catch(err){
+  alert("Server error.");
+}
+
+btn.innerText = "Book Now";
+btn.disabled = false;
+
+});
+</script>
 <footer>
   © 2025 Harish · Healing & Energy Sessions
 </footer>
 </body>
 </html>
+
 
