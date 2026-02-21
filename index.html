@@ -1393,9 +1393,11 @@ section{
       You’ll be notified when new healing sessions open.
      </div>
 
+
     <form id="waitlistOnlyForm" class="waitlist-form">
   <!-- <input type="hidden" name="_captcha" value="false">
   -->
+
 
   <!-- Label added for accessibility -->
   <!-- <label for="waitlist-email">Email <em>(required)</em></label>-->
@@ -2202,57 +2204,10 @@ document.addEventListener("DOMContentLoaded",()=>{
 GOD_BOOKING_ENGINE.init();
 });
 
-</script>
-<script>
-async function handleFormSubmit(formId) {
 
-  const form = document.getElementById(formId);
-
-  form.addEventListener("submit", async function(e) {
-
-    e.preventDefault();
-
-    const formData = new FormData(this);
-
-    try {
-      const response = await fetch("/api/book", {
-        method: "POST",
-        body: formData
-      });
-
-      if (response.ok) {
-        alert("Submitted successfully 🌿");
-        this.reset();
-
-        if(formId === "modalBookingForm"){
-          closeBooking();
-        }
-
-      } else {
-        alert("Something went wrong.");
-      }
-
-    } catch (error) {
-      alert("Server error.");
-    }
-
-  });
-
-}
-
-document.addEventListener("DOMContentLoaded", function(){
-
-  handleFormSubmit("waitlistOnlyForm");
-  handleFormSubmit("contactForm");
-  handleFormSubmit("modalBookingForm");
-
-});
-</script>
 <footer>
   © 2025 Harish · Healing & Energy Sessions
 </footer>
 </body>
 </html>
-
-
 
