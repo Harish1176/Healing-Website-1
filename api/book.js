@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     // 1️⃣ Send booking email to YOU
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "your-real-email@gmail.com", // 🔥 CHANGE THIS
+      to: "harish67890h@gmail.com", // 
       subject: "🌿 New Healing Session Booking",
       html: `
         <h2>New Booking Received</h2>
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     // 2️⃣ Send confirmation email to CLIENT
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: harish67890h@gmail.com,
+      to: email,
       subject: "✨ Your Healing Session Booking is Received",
       html: `
         <p>Dear ${name},</p>
