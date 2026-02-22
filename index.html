@@ -1393,11 +1393,11 @@ section{
       You’ll be notified when new healing sessions open.
      </div>
 
-    <form action="https://formsubmit.co/harish67890h@gmail.com" method="POST" class="waitlist-form">
+
+    <form id="waitlistOnlyForm" class="waitlist-form">
   <!-- <input type="hidden" name="_captcha" value="false">
   -->
-  <input type="hidden" name="_subject" value="New Waitlist Signup">
-  <input type="hidden" name="_next" value="thank-you.html">
+
 
   <!-- Label added for accessibility -->
   <!-- <label for="waitlist-email">Email <em>(required)</em></label>-->
@@ -1778,11 +1778,7 @@ section{
       <span>Reach out.</span>
     </h2>
 
-  <form action="https://formsubmit.co/harish67890h@gmail.com" method="POST">
-
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_subject" value="New Message">
-  <input type="hidden" name="_next" value="thank-you.html">
+  <form id="contactForm">
 
   <div class="field">
     <label>Name <em>(required)</em></label>
@@ -1833,16 +1829,10 @@ section{
     <h2>Book a Session</h2>
     <p>Fill the form below to reserve your session.</p>
     
-    <form 
-  action="https://formsubmit.co/harish67890h@gmail.com" method="POST"
-    >
+    <form id="modalBookingForm">
   <!-- FormSubmit settings (client emaill will be like this ONLY) -->
-  <!-- <input type="hidden" name="_captcha" value="false">
-  -->
-  <input type="hidden" name="_subject" value="New Booking">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_message" value="You have a new client booking for a healing session. Kindly review the details below for scheduling and preparation:">
-  <input type="hidden" name="_next" value="thank-you.html">
+  <!-- <input type="hidden" name="_captcha" value="false"> -->
+
 <!-- Session title -->
 <h3 id="sessionTitle" style="margin-bottom:20px;"></h3>
 
@@ -1879,8 +1869,6 @@ section{
   <input type="email" name="email" placeholder="Email" required>
   
   
- <input type="hidden" name="_autoresponse" value="Thank you for booking your healing session 🌿&#10;&#10;Your booking has been received successfully.&#10;&#10;I will personally review your request and contact you shortly to confirm the schedule.&#10;&#10;With love & light,&#10;Harish">
- <!-- Autoresponse  -->
 
 
 <button type="submit" id="bookingBtn">Book Now</button>
@@ -2216,10 +2204,53 @@ document.addEventListener("DOMContentLoaded",()=>{
 GOD_BOOKING_ENGINE.init();
 });
 
+document.getElementById("modalBookingForm")
+.addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const btn = document.getElementById("bookingBtn");
+btn.innerText = "Processing...";
+btn.disabled = true;
+
+const data = {
+  session: document.getElementById("sessionField").value,
+  duration: document.getElementById("durationField").value,
+  price: document.getElementById("priceField").value,
+  name: this.name.value,
+  email: this.email.value
+};
+
+try{
+  const res = await fetch("/api/book",{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify(data)
+  });
+
+  const result = await res.json();
+
+  if(result.success){
+    alert("Booking submitted successfully!");
+    closeBooking();
+    this.reset();
+  }else{
+    alert("Something went wrong.");
+  }
+
+}catch(err){
+  alert("Server error.");
+}
+
+btn.innerText = "Book Now";
+btn.disabled = false;
+
+});
 </script>
 <footer>
   © 2025 Harish · Healing & Energy Sessions
 </footer>
 </body>
 </html>
+
 
